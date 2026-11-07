@@ -1,0 +1,17 @@
+# CHASE conda environment.
+# Author: Flavio Ballante, Chemical Biology Consortium Sweden (CBCS-KI), Karolinska Institutet - 2026
+# Acknowledgments: thanks to Dr. Francesco Massai, Chemical Biology Consortium Sweden (CBCS-KI), Karolinska Institutet,
+# for valuable scientific input and feedback during the development of CHASE.
+name: chase
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - rdkit>=2024.03
+  - numpy
+  - pandas>=2.1
+  - openpyxl
+  - scipy
+  - scikit-learn
+  - plotly>=5.20
+  - shiny>=1.2

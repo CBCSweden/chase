@@ -1,0 +1,227 @@
+/* Author: Flavio Ballante, Chemical Biology Consortium Sweden (CBCS-KI), Karolinska Institutet - 2026 */
+/* Acknowledgments: thanks to Dr. Francesco Massai, Chemical Biology Consortium Sweden (CBCS-KI), Karolinska Institutet, */
+/* for valuable scientific input and feedback during the development of CHASE. */
+/* CHASE - Shiny edition. It looks the same as the HTML version (light theme). */
+/* The basic colours, fonts and corner radius. The --bs-* values recolour Bootstrap (which Shiny uses) */
+/* so it matches. */
+:root {
+  --bg: #f3f5f4; --surface: #ffffff; --surface-2: #eaeeec; --ink: #131715; --ink-2: #48514d; --ink-3: #737d78;
+  --line: #d9dfdc; --accent: #0e6a5e; --accent-soft: #d7ebe7; --tile: #ffffff;
+  --good: #1f7a3c; --warn: #9a6a00; --bad: #b8322a; --good-bg: #dff0e3; --warn-bg: #f7ecd0; --bad-bg: #f8dedb;
+  --f-body: "Public Sans", "Segoe UI", system-ui, -apple-system, Helvetica, Arial, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --r: 10px;
+  --bs-body-font-family: var(--f-body); --bs-body-bg: var(--bg); --bs-body-color: var(--ink);
+  --bs-primary: #0e6a5e; --bs-primary-rgb: 14,106,94; --bs-link-color: #0e6a5e; --bs-link-color-rgb: 14,106,94;
+}
+/* ---- the page, the top bar and the sidebar steps */
+body { background: var(--bg); color: var(--ink); font-size: 14px; }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+.navbar { background: var(--surface) !important; border-bottom: 1px solid var(--line); }
+.navbar-brand .brand { font-weight: 700; letter-spacing: -0.01em; font-size: 21px; color: var(--ink); }
+.navbar-brand .acro { font-size: 13px; color: var(--ink-3); margin-left: 10px; font-weight: 400; }
+.navbar-brand .acro b { color: var(--ink); font-weight: 700; }
+.btn-primary { --bs-btn-bg: #0e6a5e; --bs-btn-border-color: #0e6a5e; --bs-btn-hover-bg: #0c5d53; --bs-btn-hover-border-color: #0c5d53; --bs-btn-active-bg: #0a5047; }
+.bslib-sidebar-layout > .sidebar { background: var(--bg); }
+.step { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px 14px; margin-bottom: 12px; }
+.step h2 { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: 15px; font-weight: 600; }
+.step h2 .n { display: inline-grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--accent-soft); color: var(--accent); font-family: var(--f-mono); font-size: 12px; }
+.step .form-group, .step .shiny-input-container { margin-bottom: 8px; width: 100% !important; }
+.step label, .step .control-label { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); font-weight: 600; }
+.step .input-group label, .step .input-group .btn, .step .form-control { text-transform: none; letter-spacing: 0; font-size: 13px; font-weight: 500; }
+.step .input-group .btn { padding: 6px 10px; }
+.step .shiny-input-radiogroup label.radio-inline, .step .form-check-label { text-transform: none; letter-spacing: 0; font-weight: 500; font-size: 13px; color: var(--ink); }
+.hint { color: var(--ink-3); font-size: 12px; margin: 0; }
+.filehint { color: var(--ink-2); font-size: 12px; margin: -4px 0 8px; overflow-wrap: anywhere; }
+.row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sessrow { display: flex; gap: 8px; flex-wrap: wrap; align-items: flex-start; }
+.sessrow > * { flex: 1; }
+/* ---- the main area: messages, summary tiles and cards */
+.bench { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.banner { background: var(--warn-bg); border-radius: var(--r); padding: 10px 14px; font-size: 13px; }
+.banner b { color: var(--warn); }
+.alert-chase { background: var(--bad-bg); border-radius: var(--r); padding: 10px 14px; font-size: 13px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; }
+.stat { background: var(--surface); padding: 10px 14px; display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.stat .k { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); font-weight: 600; }
+.stat .v { font-family: var(--f-mono); font-size: 20px; font-variant-numeric: tabular-nums; }
+.stat .s { font-size: 12px; color: var(--ink-3); }
+.ccard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); min-width: 0; }
+.ccard-h { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.ccard-h h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.ccard-h .meta { color: var(--ink-3); font-size: 12px; }
+.ccard-h .spacer, .sp { flex: 1; }
+.ccard-h .shiny-input-container { margin: 0; width: auto !important; }
+.ccard-h .form-check { margin: 0; }
+.ctools { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; padding: 8px 14px; border-bottom: 1px solid var(--line); font-size: 12px; color: var(--ink-2); }
+.ctools .shiny-input-container { margin: 0; width: auto !important; }
+.ctools .form-label, .ctools label { font-size: 12px; margin: 0 6px 0 0; text-transform: none; letter-spacing: 0; font-weight: 500; }
+.ctools .form-group { display: flex; align-items: center; gap: 6px; }
+.ctools input[type=number] { width: 76px; }
+.ctools .irs { min-width: 160px; }
+/* ---- the % response plot (fixed height, plotly fills the width) */
+#plot { width: 100%; height: 470px; }
+.plot-foot { padding: 8px 14px 12px; color: var(--ink-3); font-size: 12px; }
+/* Chemotypes and the detail panel side by side. On narrow screens they are stacked. */
+.split { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 16px; align-items: start; }
+@media (max-width: 1280px) { .split { grid-template-columns: minmax(0, 1fr); } }
+/* ---- chemotype cards and structure tiles */
+.cgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(196px, 1fr)); gap: 10px; padding: 14px; }
+.chemo { border: 1px solid var(--line); border-radius: 9px; padding: 8px; display: flex; flex-direction: column; gap: 6px; cursor: pointer; background: var(--surface); text-align: left; }
+.chemo:hover { border-color: var(--ink-3); }
+.chemo[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.tilebox { background: var(--tile); border-radius: 6px; aspect-ratio: 4 / 3; width: 100%; display: grid; place-items: center; overflow: hidden; }
+.tilebox svg { width: 100%; height: 100%; display: block; }
+.tilebox .na { color: #7a827e; font-size: 12px; }
+.chemo .l1 { display: flex; justify-content: space-between; align-items: baseline; gap: 6px; }
+.chemo .id { font-family: var(--f-mono); font-size: 12px; }
+.chemo .n { font-size: 12px; color: var(--ink-3); }
+.chemo .l2 { display: flex; gap: 8px; flex-wrap: wrap; font-size: 12px; color: var(--ink-2); }
+.chemo .l2 b { font-family: var(--f-mono); font-weight: 500; color: var(--ink); }
+.chemo .enr { color: var(--ink-3); }
+.strip { width: 100%; height: 18px; display: block; }
+.empty { padding: 28px 18px; color: var(--ink-3); text-align: center; font-size: 13px; }
+/* ---- chips: small coloured labels (good, warn, bad, accent). The covalent chip (.cov) is further down. */
+.chip { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 10px; background: var(--surface-2); color: var(--ink-2); white-space: nowrap; }
+.chip i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+.chip.good { background: var(--good-bg); color: var(--good); }
+.chip.warn { background: var(--warn-bg); color: var(--warn); }
+.chip.bad { background: var(--bad-bg); color: var(--bad); }
+.chip.acc { background: var(--accent-soft); color: var(--accent); }
+/* ---- the detail panel: pinned compound, chemotype members and triage buttons */
+.dsec { padding: 14px; display: flex; flex-direction: column; gap: 10px; border-bottom: 1px solid var(--line); }
+.dsec:last-child { border-bottom: 0; }
+.dsec h4 { margin: 0; font-size: 15px; font-weight: 600; display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.kv { display: grid; grid-template-columns: auto 1fr; gap: 3px 12px; font-size: 13px; margin: 0; }
+.kv dt { color: var(--ink-3); font-weight: 400; }
+.kv dd { margin: 0; font-family: var(--f-mono); font-size: 12.5px; overflow-wrap: anywhere; }
+.big .tilebox { aspect-ratio: 16 / 10; }
+.mlist { display: flex; flex-direction: column; gap: 6px; max-height: 640px; overflow: auto; }
+.mrow { display: grid; grid-template-columns: 92px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 6px; border-radius: 8px; border: 1px solid transparent; cursor: pointer; background: transparent; text-align: left; }
+.mrow:hover { background: var(--surface-2); }
+.mrow[aria-pressed="true"] { border-color: var(--accent); }
+.mrow .who { display: flex; flex-direction: column; min-width: 0; font-size: 12px; align-items: flex-start; }
+.mrow .who b { font-family: var(--f-mono); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 100%; }
+.mrow .who span { color: var(--ink-3); }
+.mrow .pct { font-family: var(--f-mono); font-size: 13px; display: flex; flex-direction: column; align-items: flex-end; gap: 3px; }
+.mrow .pct .sm { font-size: 11px; color: var(--ink-3); }
+/* Triage buttons: a pressed button takes the colour of its decision. */
+.seg.tri { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2px; border: 1px solid var(--line); border-radius: 8px; padding: 2px; background: var(--surface-2); }
+.seg.tri button { border: 0; background: transparent; padding: 5px 6px; border-radius: 6px; font-size: 12px; font-weight: 600; color: var(--ink-2); cursor: pointer; }
+.seg.tri button:hover { background: var(--surface); }
+.seg.tri button[aria-pressed="true"][data-status="confirm"] { background: var(--good-bg); color: var(--good); }
+.seg.tri button[aria-pressed="true"][data-status="resynth"] { background: var(--warn-bg); color: var(--warn); }
+.seg.tri button[aria-pressed="true"][data-status="analogues"] { background: var(--accent-soft); color: var(--accent); }
+.seg.tri button[aria-pressed="true"][data-status="discard"] { background: var(--bad-bg); color: var(--bad); }
+.trictl { display: flex; flex-direction: column; gap: 6px; }
+.trictl .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); font-weight: 600; }
+.trictl textarea { width: 100%; border: 1px solid var(--line); border-radius: 7px; padding: 6px 8px; font: inherit; font-size: 13px; resize: vertical; }
+.trirow { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.tmeta { font-size: 11px; color: var(--ink-3); }
+/* ---- the triage board: four columns (two on narrow screens) */
+.board { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; padding: 14px; }
+@media (max-width: 1100px) { .board { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.bcol { background: var(--surface-2); border-radius: 9px; padding: 8px; display: flex; flex-direction: column; gap: 8px; min-width: 0; max-height: 560px; overflow: auto; }
+.bcol h5 { margin: 0; display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+.bcol h5 .c { font-family: var(--f-mono); color: var(--ink-3); }
+.titem { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 6px; display: flex; flex-direction: column; gap: 4px; text-align: left; cursor: pointer; min-width: 0; }
+.titem:hover { border-color: var(--ink-3); }
+.titem.gone { opacity: .7; }
+.titem .tilebox { aspect-ratio: 2 / 1; }
+.titem .tl { display: flex; justify-content: space-between; gap: 6px; font-size: 12px; }
+.titem .tl b { font-family: var(--f-mono); font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.titem .tn { font-size: 11.5px; color: var(--ink-3); }
+.titem .tnote { font-size: 12px; overflow-wrap: anywhere; }
+.trinotice { padding: 8px 14px; font-size: 13px; color: var(--ink-2); border-bottom: 1px solid var(--line); }
+/* ---- the activity-cliff list and the cliff pair in the detail panel */
+.cliffs { display: flex; flex-direction: column; gap: 8px; padding: 14px; }
+.cliff { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 10px; align-items: center; border: 1px solid var(--line); border-radius: 9px; padding: 8px; background: var(--surface); cursor: pointer; text-align: left; }
+.cliff:hover { border-color: var(--ink-3); }
+.cliff[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.cside { display: grid; grid-template-columns: 110px minmax(0, 1fr); column-gap: 10px; align-items: center; min-width: 0; }
+.cside .tilebox { grid-row: 1 / span 3; }
+.cside .who { display: flex; flex-direction: column; min-width: 0; font-size: 12px; }
+.cside .who b { font-family: var(--f-mono); font-weight: 500; }
+.cside .who span { color: var(--ink-3); }
+.cside .pct { font-size: 15px; }
+.cside .chip { justify-self: start; }
+.cmid { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 12px; color: var(--ink-2); padding: 0 4px; }
+.cmid .big { font-size: 16px; color: var(--ink); }
+.cmid .sm { font-size: 11px; color: var(--ink-3); }
+.pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.pairside { display: flex; flex-direction: column; gap: 4px; border: 1px solid var(--line); border-radius: 8px; padding: 6px; background: var(--surface); text-align: left; cursor: pointer; font-size: 12px; align-items: flex-start; }
+.pairside .who { display: flex; flex-direction: column; }
+.pairside .who b { font-family: var(--f-mono); font-weight: 500; }
+.pairside .who span { color: var(--ink-3); }
+/* ---- plates: heatmap legend, small plate maps, large map, replicates and QC table */
+.hmlegend { gap: 8px; }
+.hmbar { width: 160px; height: 10px; border-radius: 3px; background: linear-gradient(90deg, #6250d6 0%, #eef1ef 29.4%, #eb6834 88.2%, #eb6834 100%); border: 1px solid var(--line); display: inline-block; }
+.minigrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; padding: 14px; }
+.mini { border: 1px solid var(--line); border-radius: 8px; padding: 6px; background: var(--surface); cursor: pointer; display: flex; flex-direction: column; gap: 4px; }
+.mini:hover { border-color: var(--ink-3); }
+.mini[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+.mini svg { width: 100%; height: auto; display: block; border-radius: 3px; background: #fff; }
+.mini .ml { display: flex; justify-content: space-between; align-items: center; font-size: 12px; }
+.bighead { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; padding: 4px 14px 0; font-size: 12.5px; color: var(--ink-2); }
+.bighead b { color: var(--ink); }
+#bigmap { width: 100%; height: 420px; }
+#repplot { width: 100%; height: 460px; }
+.repstats { margin: 12px 14px; }
+.replist { padding: 0 14px 14px; }
+.replist h4 { font-size: 14px; font-weight: 600; margin: 4px 0 8px; }
+.rlist { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 6px; }
+.tablewrap { overflow-x: auto; }
+table.qc { border-collapse: collapse; width: 100%; font-size: 12.5px; }
+table.qc th, table.qc td { padding: 6px 12px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+table.qc th { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); background: var(--surface-2); }
+table.qc th:first-child, table.qc td:first-child { text-align: left; }
+table.qc td { font-family: var(--f-mono); }
+/* ---- data checks */
+.notes { padding: 12px 14px; font-size: 13px; color: var(--ink-2); display: flex; flex-direction: column; gap: 6px; }
+.notes code, .help code { font-family: var(--f-mono); font-size: 12px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
+/* ---- the structure tooltip that follows the mouse (chase.js creates it) */
+.chase-tip { position: fixed; z-index: 2000; width: 250px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; box-shadow: 0 8px 28px rgba(0,0,0,.18); padding: 8px; pointer-events: none; display: flex; flex-direction: column; gap: 6px; }
+.chase-tip[hidden] { display: none; }
+.chase-tip .tt { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.chase-tip .tt b { font-family: var(--f-mono); font-size: 12.5px; font-weight: 500; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chase-tip .pv { font-family: var(--f-mono); font-size: 15px; }
+.chase-tip .sm { font-size: 11.5px; color: var(--ink-3); display: flex; gap: 8px; flex-wrap: wrap; }
+.nav-underline .nav-link, .ccard .nav-link { font-size: 13px; }
+.ccard .card { border: 0; }
+/* ---- the How to use page */
+.help { max-width: 880px; margin: 0 auto; padding: 24px 16px 48px; display: flex; flex-direction: column; gap: 26px; }
+.help h2 { font-size: 22px; font-weight: 700; margin: 0; }
+.help section { display: flex; flex-direction: column; gap: 10px; }
+.help h3 { margin: 0; font-size: 18px; font-weight: 600; }
+.help h4 { margin: 6px 0 0; font-size: 14px; font-weight: 700; }
+.help p, .help li { color: var(--ink-2); margin: 0; }
+.help sup { font-size: 0.72em; line-height: 0; }   /* reference numbers: keep the line spacing even */
+.help ul, .help ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.help b { color: var(--ink); }
+.help .formula { font-family: var(--f-mono); font-size: 13px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; white-space: pre; overflow-x: auto; }
+.help table { border-collapse: collapse; width: 100%; font-size: 13px; background: var(--surface); }
+.help th, .help td { padding: 6px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.help th { font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--ink-3); background: var(--surface-2); }
+.help .acro b { color: var(--ink); }
+.help .foot { border-top: 1px solid var(--line); padding-top: 16px; font-size: 13px; color: var(--ink-3); }
+
+/* ---- colour pickers */
+.colorrow { gap: 16px; background: var(--surface-2); }
+.cpick { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--ink-2); cursor: pointer; }
+.cpick input[type=color] { width: 28px; height: 22px; padding: 0; border: 1px solid var(--line); border-radius: 5px; background: none; cursor: pointer; }
+.ccard-h .shiny-download-link { white-space: nowrap; }
+
+/* ---- PAINS and covalent chips, and the list of alerts */
+.chip.cov { background: #e6e2fb; color: #4b3cb0; }
+.chips { display: inline-flex; gap: 4px; flex-wrap: wrap; }
+.alerts { display: flex; flex-direction: column; gap: 4px; }
+.alerts .lbl { font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-2); font-weight: 600; }
+.alerts ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 3px; font-size: 12.5px; }
+
+/* ---- 'Import triage (.csv)': make Shiny's file input look like a normal button in the card header */
+.trimport .shiny-input-container { margin: 0; width: auto !important; }
+.trimport .form-group { margin: 0; }
+.trimport .input-group { flex-wrap: nowrap; }
+.trimport .input-group > input.form-control { display: none; }
+.trimport .btn-file, .trimport .input-group-btn .btn, .trimport label.input-group-btn { font-size: 12px; border-radius: 6px !important; }
+.trimport .progress { display: none; }

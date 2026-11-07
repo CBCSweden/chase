@@ -1,0 +1,36 @@
+# Author: Flavio Ballante, Chemical Biology Consortium Sweden (CBCS-KI), Karolinska Institutet - 2026
+# Acknowledgments: thanks to Dr. Francesco Massai, Chemical Biology Consortium Sweden (CBCS-KI), Karolinska Institutet,
+# for valuable scientific input and feedback during the development of CHASE.
+# CHASE covalent-warhead alerts. One per line: name <TAB> SMARTS <TAB> note.
+# Copy this file to ~/.chase/covalent_alerts.tsv (or point CHASE_COVALENT at a file) to use your own list.
+Acrylamide-type (alpha,beta-unsaturated amide)	[C;!R;!a]=[C;!R;!a]-C(=O)-[#7]	Michael acceptor (ibrutinib, osimertinib, afatinib)
+alpha-Cyanoacrylamide / cyanoacrylate	[C;!a]=[C;!a](C#N)C(=O)	Reversible covalent Michael acceptor
+Propiolamide / ynamide	C#CC(=O)[#7]	Alkyne Michael acceptor
+Ynone	C#CC(=O)[#6]	Alkyne Michael acceptor
+Vinyl sulfone / sulfonamide	[C;!a]=[C;!a]S(=O)(=O)	Michael acceptor
+Acyclic enone	[C;!R;!a]=[C;!R;!a]-C(=O)-[#6]	Michael acceptor (chalcones, curcumin)
+Nitroalkene	[C;!a]=[C;!a][N+](=O)[O-]	Michael acceptor
+Maleimide	O=C1C=CC(=O)N1	Cysteine-reactive
+Quinone	O=C1C=CC(=O)C=C1	Redox-active, cysteine-reactive
+Haloacetamide	[Cl,Br,I][CH2]C(=O)[#7]	Alkylating (chloroacetamide)
+alpha-Haloketone	[Cl,Br,I][CX4;H1,H2]C(=O)[#6]	Alkylating
+Primary alkyl bromide / iodide	[CH2;!$(C(F))][Br,I]	Alkylating
+Epoxide	C1OC1	Alkylating
+Aziridine	C1[NX3]C1	Alkylating
+Isothiocyanate	N=C=S	Acylating (amines, thiols)
+Isocyanate	N=C=O	Acylating
+Sulfonyl fluoride	[#6]S(=O)(=O)F	SuFEx (Ser, Tyr, Lys)
+Fluorosulfate	OS(=O)(=O)F	SuFEx
+Sulfonyl chloride	S(=O)(=O)Cl	Acylating
+Acyl halide	[CX3](=O)[F,Cl,Br,I]	Acylating
+Aldehyde	[CX3H1](=O)[#6]	Reversible (Lys, Cys, Ser)
+Cyanamide	[NX3]C#N	Reversible covalent (Cys)
+alpha-Ketoamide	[#6]C(=O)C(=O)[NX3]	Reversible covalent (Ser, Cys)
+Boronic acid / ester	[BX3]([OX2])[OX2]	Reversible covalent (Ser, Thr)
+beta-Lactam	O=C1CCN1	Acylating (Ser)
+beta-Lactone	O=C1CCO1	Acylating (Ser)
+NHS ester	C(=O)ON1C(=O)CCC1=O	Activated ester
+Nitrophenyl ester	C(=O)Oc1ccc([N+](=O)[O-])cc1	Activated ester
+2-Sulfonyl pyrimidine / azine	[n]c([n])S(=O)(=O)[#6]	SNAr (Cys)
+Halo-nitroarene (SNAr)	[F,Cl,Br]c:c[N+](=O)[O-]	SNAr
+Disulfide	[SX2][SX2]	Thiol exchange

@@ -57,6 +57,9 @@ def versions_text() -> str:
 # The software versions, the acknowledgments, the references and the credits are added below it in app.py.
 BODY = f"""
 <h2>How to use CHASE</h2>
+<a href="www/chase_overview.png" target="_blank" rel="noopener" title="Click to enlarge">
+<img src="www/chase_overview.png" alt="CHASE overview: load data, normalize and QC, call hits, find chemotypes, decide together" style="width: 100%; height: auto; border-radius: 10px; margin: 8px 0 20px; cursor: zoom-in;">
+</a>
 <section><p><b>CHASE</b> ({ACRO}) turns raw single-concentration screening reads into a <b>% response</b> for each compound. It plots them by compound number,
 sorts compounds into activity classes and groups them into chemotypes, so biochemists and chemists can see which structural series are active and decide together
 what to follow up. This is the Python edition: it runs locally from a conda environment, needs no internet connection, and uses RDKit for all chemistry.</p></section>
@@ -184,4 +187,4 @@ REFS = """<section class="refs"><h3>References</h3>
 <p>(3) Butina, D. Unsupervised Data Base Clustering Based on Daylight's Fingerprint and Tanimoto Similarity: A Fast and Automated Way To Cluster Small and Large Data Sets. <i>J. Chem. Inf. Comput. Sci.</i> <b>1999</b>, <i>39</i>, 747-750. DOI: <a href="https://doi.org/10.1021/ci9803381" target="_blank" rel="noopener">10.1021/ci9803381</a></p>
 <p>(4) Bemis, G. W.; Murcko, M. A. The Properties of Known Drugs. 1. Molecular Frameworks. <i>J. Med. Chem.</i> <b>1996</b>, <i>39</i>, 2887-2893. DOI: <a href="https://doi.org/10.1021/jm9602928" target="_blank" rel="noopener">10.1021/jm9602928</a></p>
 <p>(5) Guha, R.; Van Drie, J. H. Structure-Activity Landscape Index: Identifying and Quantifying Activity Cliffs. <i>J. Chem. Inf. Model.</i> <b>2008</b>, <i>48</i>, 646-658. DOI: <a href="https://doi.org/10.1021/ci7004093" target="_blank" rel="noopener">10.1021/ci7004093</a></p></section>"""
-FOOT = '<footer class="foot">Flavio Ballante, Chemical Biology Consortium Sweden (CBCS-KI), Karolinska Institutet - 2026</footer>'
+FOOT = '<footer class="foot">Flavio Ballante, Chemical Biology Consortium Sweden (CBCS-KI), Karolinska Institutet - 2026 | e-mail: flavio.ballante@ki.se</footer>'

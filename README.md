@@ -1,4 +1,5 @@
-# CHASE 3.5.0 - Chemotype-Hit Analysis of Screening Experiments
+# CHASE - Chemotype-Hit Analysis of Screening Experiments
+![CHASE overview](chase/www/chase_overview.png)
 
 **Shiny for Python edition.** CHASE turns single-concentration screening reads into % response, plots every compound with its structure on hover, groups compounds into chemotypes, and gives biochemists and chemists a shared triage board for deciding what to follow up.
 
@@ -125,4 +126,4 @@ The **How to use** tab inside the app describes every feature and method, and li
 Thanks to Dr. Francesco Massai, Chemical Biology Consortium Sweden (CBCS-KI), Karolinska Institutet, for valuable scientific input and feedback during the development of CHASE.
 
 ---
-Flavio Ballante, Chemical Biology Consortium Sweden (CBCS-KI), Karolinska Institutet - 2026
+Flavio Ballante, Chemical Biology Consortium Sweden (CBCS-KI), Karolinska Institutet - 2026 | flavio.ballante@ki.se

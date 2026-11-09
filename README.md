@@ -1,6 +1,8 @@
 # CHASE - Chemotype-Hit Analysis of Screening Experiments
 ![CHASE overview](chase/www/chase_overview.png)
 
+**CHASE is now available at https://chase.serve.scilifelab.se/**
+
 **Shiny for Python edition.** CHASE turns single-concentration screening reads into % response, plots every compound with its structure on hover, groups compounds into chemotypes, and gives biochemists and chemists a shared triage board for deciding what to follow up.
 
 It runs locally in your browser from a conda environment. After installation it needs **no internet connection**: RDKit does all the chemistry, and the plotting library is served from the installed `plotly` package.
